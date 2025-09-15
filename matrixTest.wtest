@@ -26,4 +26,24 @@ describe "Testeamos a Morfeo"{
     assert.equals(7, morfeo.vitalidad())
   }
 
+  test "Vitalidad y cansancio de morfeo si salta, se cansa y salta otra vez y descansa"{
+    morfeo.saltar()
+    assert.equals(7, morfeo.vitalidad())
+    assert.that(morfeo.estaCansado())
+    morfeo.saltar()
+    assert.equals(6, morfeo.vitalidad())
+    assert.notThat(morfeo.estaCansado())
+  }
+
+}
+
+describe "Testeamos a Trinity"{
+
+  test "Vitalidad de Trinity si salta tres veces y si es el elegido"{
+    trinity.saltar()
+    trinity.saltar()
+    trinity.saltar()
+    assert.equals(0, trinity.vitalidad())
+    assert.notThat(trinity.esElElegido())
+  }
 }

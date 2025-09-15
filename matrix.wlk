@@ -8,6 +8,7 @@ object neo{
 object morfeo{
     method esElElegido() = false
     var cansado = false
+    method estaCansado() = cansado
     var vitalidad = 8
     method vitalidad() = vitalidad
     method saltar(){ 
@@ -19,7 +20,9 @@ object morfeo{
 object trinity{
     method esElElegido() = false
     method vitalidad() = 0
-    method saltar() = null
+    method saltar(){
+        
+    }
 }
 
 object nave{
