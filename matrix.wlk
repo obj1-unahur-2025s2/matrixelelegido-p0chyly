@@ -21,10 +21,28 @@ object trinity{
     method esElElegido() = false
     method vitalidad() = 0
     method saltar(){
-        
+
     }
 }
 
 object nave{
-    const pasajeros = []
+    const pasajeros = #{neo, morfeo, trinity} //Usamos un conjunto porque los personajes no se repiten en este caso
+    method cantidadPasajeros() = pasajeros.size()
+    method pasajeroConMayorVitalidad() = pasajeros.max({p=>p.vitalidad()})
+    method estaEquilibrada()=//all evalua que todos los elementos del conjunto cumplen con una condicion
+    pasajeros.map({p=>p.vitalidad() * 2}).all( 
+        {v=>v.vitalidad() < pasajeros.max({p=>p.vitalidad()}).vitalidad()}
+    )
+    method estaElElegido() = pasajeros.any({p=>p.esElElegido()})
+    method chocar() {
+        pasajeros.forEach({p=>p.saltar()})
+        pasajeros.clear()
+    }
+    method pasajerosQueNoSonElElegido() = pasajeros.filter({p=>not p.esElElegido()})
+    method acelerar(){
+        self.pasajerosQueNoSonElElegido().forEach({p=>p.saltar()})
+    }
 }
+
+
+
